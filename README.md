@@ -1,46 +1,48 @@
 # DeepSeek Harness Desktop
 
-非公式のmacOS Electronラッパー版DeepSeek Harnessです。DeepSeek Harness本体を基に、日本語ローカライズ、macOSのウィンドウ統合、配布用のランタイム同梱を追加しています。
+[日本語](README.ja.md) | [中文](README.zh.md)
 
-本プロジェクトはDeepSeek AIの公式デスクトップアプリではありません。上流プロジェクトは[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)です。
+An unofficial macOS Electron wrapper for DeepSeek Harness. Based on DeepSeek Harness, this project adds Japanese localization, macOS window integration, and bundled runtimes for distribution.
 
-## 特徴
+This project is not an official desktop application from DeepSeek AI. The upstream project is [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).
 
-- macOS向けElectronアプリ
-- 日本語UIローカライズ
-- Node.jsとDeepSeek Harnessランタイムをアプリに同梱
-- Apple Silicon（arm64）向けビルド
+## Features
 
-DeepSeek Harness本体はDeveloper Previewです。上流の互換性変更の影響を受ける可能性があります。
+- Electron application for macOS
+- Japanese UI localization
+- Node.js and the DeepSeek Harness runtime bundled with the application
+- Builds for Apple Silicon (arm64)
 
-## 開発
+DeepSeek Harness itself is a Developer Preview and may be affected by compatibility changes upstream.
+
+## Development
 
 ```sh
 npm install
 npm run start
 ```
 
-開発起動では、`dsh`コマンドをPATH上から解決します。配布用ビルドでは、ビルド時にDeepSeek HarnessとNode.jsランタイムをbundleへ組み込みます。
+During development, the `dsh` command is resolved from `PATH`. Distribution builds embed DeepSeek Harness and the Node.js runtime into the application bundle at build time.
 
-## ビルド
+## Build
 
 ```sh
-# アプリバンドルを生成
+# Generate the application bundle
 npm run build:dir
 
-# DMGとアプリバンドルを生成
+# Generate a DMG and application bundle
 npm run build
 ```
 
-`prepare-bundle`は`@deepseek-ai/dsh@0.1.0-rc.6`とNode.jsランタイムをダウンロードし、日本語ローカライズと第三者ライセンス一覧を適用します。ビルドにはネットワーク接続が必要です。
+`prepare-bundle` downloads `@deepseek-ai/dsh@0.1.0-rc.6` and the Node.js runtime, then applies Japanese localization and the third-party license list. A network connection is required to build the application.
 
-## 上流プロジェクト
+## Upstream project
 
 - [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
 - [DeepSeek Harness README](https://github.com/deepseek-ai/deepseek-harness#readme)
 
-## ライセンス
+## License
 
-上流由来コードとこのforkで追加したコードはMIT Licenseです。詳細は[LICENSE](LICENSE)を参照してください。
+Code originating from upstream and code added in this fork are licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
-同梱依存パッケージのライセンスは、生成された[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)に記載しています。
+Licenses for bundled dependencies are listed in the generated [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
