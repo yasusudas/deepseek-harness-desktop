@@ -1,0 +1,2 @@
+- Communicates in Japanese; prefers responses in Japanese. Confidence: 0.8
+- Prefers investigating and understanding the codebase before making changes. Confidence: 0.6

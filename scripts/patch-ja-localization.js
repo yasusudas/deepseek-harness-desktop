@@ -5,6 +5,12 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const MODULE_ROOT = path.join(ROOT, 'bundle', 'dsh', 'lib', 'node_modules', '@deepseek-ai');
 const LOCALE_ROOT = path.join(MODULE_ROOT, 'dsh-client-locale', 'lib');
+const WEB_FRONTEND_ASSETS = path.join(
+  MODULE_ROOT,
+  'dsh-web-frontend',
+  'dist',
+  'assets',
+);
 const jaDictionaries = JSON.parse(fs.readFileSync(path.join(ROOT, 'localizations', 'ja.json'), 'utf8'));
 const staticJapanese = JSON.parse(fs.readFileSync(path.join(ROOT, 'localizations', 'static-ja.json'), 'utf8'));
 
@@ -166,7 +172,24 @@ function patchSettingsOverlayLayer() {
   );
 }
 
+function patchMenuPortalLayer() {
+  const cssFile = fs.readdirSync(WEB_FRONTEND_ASSETS)
+    .filter((name) => /^index-[^/]+\.css$/.test(name))
+    .map((name) => path.join(WEB_FRONTEND_ASSETS, name))
+    .find((file) => fs.readFileSync(file, 'utf8').includes('._portal_19372_43{'));
+  if (cssFile === undefined) {
+    throw new Error(`menu portal stylesheet not found in ${WEB_FRONTEND_ASSETS}`);
+  }
+  replaceOnce(
+    cssFile,
+    '._portal_19372_43{position:fixed;top:auto;left:auto;z-index:1100}',
+    '._portal_19372_43{position:fixed;top:auto;left:auto;z-index:11001}',
+    'menu portal stacking order',
+  );
+}
+
 patchHostLocale();
 patchClientLocale();
 patchSettingsOverlayLayer();
+patchMenuPortalLayer();
 console.log(`Japanese localization applied: ${Object.keys(jaDictionaries).length} namespaces, ${Object.keys(staticJapanese).length} static phrases.`);
