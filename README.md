@@ -41,6 +41,29 @@ npm run build
 - [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
 - [DeepSeek Harness README](https://github.com/deepseek-ai/deepseek-harness#readme)
 
+## Community and support
+
+- Submit feedback or bug reports through [GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions).
+- Add the [dsh-plugin](https://github.com/topics/dsh-plugin) topic to your plugin repository to make it easier to discover.
+- To join the DeepSeek Harness WeCom group, scan the WeCom assistant QR code and complete the group survey. The assistant will invite you after you complete it.
+
+<table>
+  <thead>
+    <tr>
+      <th align="center">WeCom assistant</th>
+      <th align="center">Group survey</th>
+      <th align="center">WeChat Official Account</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><img src="assets/community-wecom-assistant.png" alt="DeepSeek Harness WeCom assistant QR code" width="180" height="180"></td>
+      <td align="center"><a href="https://trtgsjkv6r.feishu.cn/share/base/form/shrcnIt5twSVdLGD52KJBckGCgg"><img src="assets/community-wecom-survey.png" alt="DeepSeek Harness group survey QR code" width="180" height="180"></a></td>
+      <td align="center"><img src="assets/community-wechat-official-account.png" alt="DeepSeek Harness team WeChat Official Account QR code" width="180" height="180"></td>
+    </tr>
+  </tbody>
+</table>
+
 ## License
 
 Code originating from upstream and code added in this fork are licensed under the MIT License. See [LICENSE](LICENSE) for details.

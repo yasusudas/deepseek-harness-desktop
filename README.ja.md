@@ -41,6 +41,29 @@ npm run build
 - [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)
 - [DeepSeek Harness README](https://github.com/deepseek-ai/deepseek-harness#readme)
 
+## コミュニティとサポート
+
+- フィードバックやバグ報告は[GitHub Discussions](https://github.com/deepseek-ai/deepseek-harness/discussions)から送信できます。
+- プラグインリポジトリに[dsh-plugin](https://github.com/topics/dsh-plugin)トピックを追加すると、見つけてもらいやすくなります。
+- DeepSeek Harnessの企業微信（WeCom）グループへの参加を希望する場合は、企業微信アシスタントのQRコードを読み取り、入群アンケートに回答してください。回答後、アシスタントから招待されます。
+
+<table>
+  <thead>
+    <tr>
+      <th align="center">企業微信アシスタント</th>
+      <th align="center">入群アンケート</th>
+      <th align="center">微信公众号</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td align="center"><img src="assets/community-wecom-assistant.png" alt="DeepSeek Harness 企業微信アシスタントのQRコード" width="180" height="180"></td>
+      <td align="center"><a href="https://trtgsjkv6r.feishu.cn/share/base/form/shrcnIt5twSVdLGD52KJBckGCgg"><img src="assets/community-wecom-survey.png" alt="DeepSeek Harness 入群アンケートのQRコード" width="180" height="180"></a></td>
+      <td align="center"><img src="assets/community-wechat-official-account.png" alt="DeepSeek Harnessチームの微信公众号QRコード" width="180" height="180"></td>
+    </tr>
+  </tbody>
+</table>
+
 ## ライセンス
 
 上流由来コードとこのforkで追加したコードはMIT Licenseです。詳細は[LICENSE](LICENSE)を参照してください。
