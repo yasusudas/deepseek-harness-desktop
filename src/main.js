@@ -7,6 +7,8 @@ const net = require('net');
 
 const DEFAULT_PORT = 3080;
 const STARTUP_TIMEOUT_MS = 120_000;
+const WINDOW_TOP_EXTENSION = 18;
+const TRAFFIC_LIGHT_POSITION = { x: 16, y: -6 };
 
 let mainWindow = null;
 let dshProcess = null;
@@ -148,8 +150,9 @@ const DRAG_REGION_SCRIPT = [
   '  if (window.__electronDragRegion) return;',
   '  window.__electronDragRegion = true;',
   '  var HEIGHT = 40;',
+  '  var TOP_INSET = ' + WINDOW_TOP_EXTENSION + ';',
   '  var style = document.createElement("style");',
-  '  style.textContent = "#electron-drag-region{position:fixed;top:0;left:0;right:0;height:" + HEIGHT + "px;-webkit-app-region:drag;z-index:9998;pointer-events:auto;}";',
+  '  style.textContent = "html{box-sizing:border-box!important;padding-top:" + TOP_INSET + "px!important;background:#fff!important}#electron-drag-region{position:fixed;top:0;left:0;right:0;height:" + HEIGHT + "px;-webkit-app-region:drag;z-index:9998;pointer-events:auto;}";',
   '  document.head.appendChild(style);',
   '  var region = document.createElement("div");',
   '  region.id = "electron-drag-region";',
@@ -178,14 +181,15 @@ function installWindowDragRegion(webContents) {
 
 function createWindow(url) {
   mainWindow = new BrowserWindow({
+    show: false,
     width: 1280,
     height: 860,
     minWidth: 900,
-    minHeight: 600,
+    minHeight: 600 + WINDOW_TOP_EXTENSION,
     title: 'DeepSeek Harness',
-    backgroundColor: '#0f0f0f',
+    backgroundColor: '#ffffff',
     titleBarStyle: 'hiddenInset',
-    trafficLightPosition: { x: 16, y: -2 },
+    trafficLightPosition: TRAFFIC_LIGHT_POSITION,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -194,7 +198,23 @@ function createWindow(url) {
     },
   });
 
+  if (process.platform === 'darwin') {
+    const bounds = mainWindow.getBounds();
+    mainWindow.setBounds({
+      y: bounds.y - WINDOW_TOP_EXTENSION,
+      height: bounds.height + WINDOW_TOP_EXTENSION,
+    });
+    mainWindow.setWindowButtonPosition({
+      x: TRAFFIC_LIGHT_POSITION.x,
+      y: TRAFFIC_LIGHT_POSITION.y + WINDOW_TOP_EXTENSION,
+    });
+  }
+
   mainWindow.loadURL(url);
+
+  mainWindow.once('ready-to-show', function() {
+    mainWindow.show();
+  });
 
   mainWindow.webContents.on('did-finish-load', function() {
     installWindowDragRegion(mainWindow.webContents);
