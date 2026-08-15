@@ -47,6 +47,8 @@ function main() {
   writeLauncher();
   console.log('Applying Japanese localization...');
   run(`node "${path.join(ROOT, 'scripts', 'patch-ja-localization.js')}"`);
+  console.log('Generating third-party notices...');
+  run(`node "${path.join(ROOT, 'scripts', 'generate-third-party-notices.js')}"`);
   const size = execSync(`du -sh "${BUNDLE}"`, { encoding: 'utf8' }).trim();
   console.log('Bundle ready:', BUNDLE, `(${size})`);
 }

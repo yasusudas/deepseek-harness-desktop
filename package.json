@@ -8,6 +8,8 @@
   "scripts": {
     "start": "electron .",
     "prepare-bundle": "node scripts/prepare-bundle.js",
+    "generate-third-party-notices": "node scripts/generate-third-party-notices.js",
+    "verify-third-party-notices": "node scripts/generate-third-party-notices.js --check",
     "build": "npm run prepare-bundle && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac",
     "build:dir": "npm run prepare-bundle && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dir",
     "generate-icon": "bash scripts/generate-icon.sh"
@@ -37,7 +39,10 @@
     },
     "files": [
       "src/**/*",
-      "package.json"
+      "package.json",
+      "LICENSE",
+      "README.md",
+      "THIRD_PARTY_NOTICES.md"
     ],
     "extraResources": [
       {
