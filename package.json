@@ -11,7 +11,7 @@
     "verify-localizations": "node scripts/verify-localizations.js",
     "generate-third-party-notices": "node scripts/generate-third-party-notices.js",
     "verify-third-party-notices": "node scripts/generate-third-party-notices.js --check",
-    "build": "npm run prepare-bundle && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac",
+    "build": "npm run prepare-bundle && electron-builder --mac",
     "build:dir": "npm run prepare-bundle && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac dir",
     "generate-icon": "bash scripts/generate-icon.sh"
   },
@@ -28,10 +28,11 @@
         "dmg",
         "dir"
       ],
-      "identity": null,
-      "sign": false,
-      "forceCodeSigning": false,
-      "notarize": false,
+      "identity": "Developer ID Application: Issei Yasuda (ZK2547NW56)",
+      "sign": true,
+      "forceCodeSigning": true,
+      "hardenedRuntime": true,
+      "notarize": true,
       "icon": "assets/icon.icns"
     },
     "dmg": {
