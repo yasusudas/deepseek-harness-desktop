@@ -1,6 +1,6 @@
 {
   "name": "deepseek-harness-desktop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Standalone Electron wrapper for DeepSeek Harness",
   "main": "src/main.js",
   "author": "Ichi",
