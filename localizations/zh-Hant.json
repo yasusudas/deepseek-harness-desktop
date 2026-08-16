@@ -27,7 +27,7 @@
   },
   "settings.locale": {
     "language.title": "語言",
-    "language.auto": "Auto（{language}）"
+    "language.auto": "系統設定"
   },
   "settings.agentPreset": {
     "title": "代理程式預設",

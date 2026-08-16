@@ -159,7 +159,7 @@ function patchClientLocale() {
   replaceOnce(
     file,
     '\t\tconst zh = { "language.title": "语言" };\n\t\t/** English dictionary, checked complete against the zh key set. */\n\t\tconst en = { "language.title": "Language" };',
-    '\t\tconst zh = { "language.title": "语言", "language.auto": "Auto（{language}）" };\n\t\t/** English dictionary, checked complete against the zh key set. */\n\t\tconst en = { "language.title": "Language", "language.auto": "Auto ({language})" };',
+    '\t\tconst zh = { "language.title": "语言", "language.auto": "系统设置" };\n\t\t/** English dictionary, checked complete against the zh key set. */\n\t\tconst en = { "language.title": "Language", "language.auto": "System Settings" };',
     'Auto locale labels',
   );
   const originalLocales = '\t\tconst LOCALES = Object.freeze([{\n\t\t\tid: "zh",\n\t\t\tlabel: "中文"\n\t\t}, {\n\t\t\tid: "en",\n\t\t\tlabel: "English"\n\t\t}]);';
@@ -205,7 +205,7 @@ function patchClientLocale() {
   replaceOnce(
     file,
     '\t\tfunction LanguageRow({ t, setLocale, useStore }) {\n\t\t\tconst active = useStore((s) => s.active);\n\t\t\tconst options = useStore((s) => s.options);\n\t\t\tconst [open, setOpen] = (0, react.useState)(false);\n\t\t\tconst activeLabel = options.find((o) => o.id === active)?.label ?? active;',
-    '\t\tfunction LanguageRow({ t, setLocale, useStore }) {\n\t\t\tconst active = useStore((s) => s.active);\n\t\t\tconst selection = useStore((s) => s.selection);\n\t\t\tconst options = useStore((s) => s.options);\n\t\t\tconst [open, setOpen] = (0, react.useState)(false);\n\t\t\tconst activeLabel = options.find((o) => o.id === active)?.label ?? active;\n\t\t\tconst autoLabel = t("language.auto", { language: activeLabel });\n\t\t\tconst selectable = [{ id: "auto", label: autoLabel }, ...options];\n\t\t\tconst selectedLabel = selection === "auto" ? autoLabel : options.find((o) => o.id === selection)?.label ?? activeLabel;',
+    '\t\tfunction LanguageRow({ t, setLocale, useStore }) {\n\t\t\tconst active = useStore((s) => s.active);\n\t\t\tconst selection = useStore((s) => s.selection);\n\t\t\tconst options = useStore((s) => s.options);\n\t\t\tconst [open, setOpen] = (0, react.useState)(false);\n\t\t\tconst activeLabel = options.find((o) => o.id === active)?.label ?? active;\n\t\t\tconst autoLabel = t("language.auto");\n\t\t\tconst selectable = [{ id: "auto", label: autoLabel }, ...options];\n\t\t\tconst selectedLabel = selection === "auto" ? autoLabel : options.find((o) => o.id === selection)?.label ?? activeLabel;',
     'Auto language row state',
   );
   replaceOnce(file, '\t\t\t\t\titems: options.map((o) => ({', '\t\t\t\t\titems: selectable.map((o) => ({', 'Auto menu option');
@@ -268,10 +268,51 @@ function patchMenuPortalLayer() {
   replaceOnce(cssFile, '._portal_19372_43{position:fixed;top:auto;left:auto;z-index:1100}', '._portal_19372_43{position:fixed;top:auto;left:auto;z-index:11001}', 'menu portal stacking order');
 }
 
+function patchCollapsedSidebarGeometry() {
+  replaceOnce(
+    path.join(MODULE_ROOT, 'dsh-client-ui-layout', 'lib', 'client.js'),
+    'const s = sidebar === 0 ? 56 : clampWidth(sidebar, 264, 420);',
+    'const s = sidebar === 0 ? 72 : clampWidth(sidebar, 264, 420);',
+    'collapsed sidebar column width',
+  );
+  const sidebarFile = path.join(MODULE_ROOT, 'dsh-client-ui-sidebar', 'lib', 'client.js');
+  replaceOnce(
+    sidebarFile,
+    '.hHd-Xa_root.hHd-Xa_collapsed{padding:18px 10px 6px}',
+    '.hHd-Xa_root.hHd-Xa_collapsed{padding:18px 18px 6px}',
+    'collapsed sidebar equal padding',
+  );
+  replaceOnce(
+    sidebarFile,
+    '.hHd-Xa_collapsed .hHd-Xa_logoRow{justify-content:flex-start;',
+    '.hHd-Xa_collapsed .hHd-Xa_logoRow{justify-content:center;',
+    'collapsed logo row centering',
+  );
+  replaceOnce(
+    sidebarFile,
+    '.hHd-Xa_collapsed .hHd-Xa_newSession{background:0 0;border-color:#0000;align-self:flex-start;',
+    '.hHd-Xa_collapsed .hHd-Xa_newSession{background:0 0;border-color:#0000;align-self:center;',
+    'collapsed new-session centering',
+  );
+  replaceOnce(
+    sidebarFile,
+    'controls enter the 56px rail from the same horizontal offset',
+    'controls enter the 72px rail from the same horizontal offset',
+    'collapsed rail width comment',
+  );
+  replaceOnce(
+    path.join(MODULE_ROOT, 'dsh-client-ui-workspace', 'lib', 'client.js'),
+    '.qDHVXG_rail .qDHVXG_sectionHeader{justify-content:flex-start;',
+    '.qDHVXG_rail .qDHVXG_sectionHeader{justify-content:center;',
+    'collapsed workspace header centering',
+  );
+}
+
 patchHostLocale();
 patchClientLocale();
 patchTypeDeclarations();
 patchLocaleFonts();
 patchSettingsOverlayLayer();
 patchMenuPortalLayer();
+patchCollapsedSidebarGeometry();
 console.log(`Localizations applied: ${localizedIds.join(', ')}.`);

@@ -6,11 +6,21 @@ English | [中文](2026-08-16-macos-sidebar-top-extension-dark-mode.zh.md)
 
 ## Problem
 
-The Electron titlebar inset kept the page-wide `#fff` background after the sidebar switched to dark mode, leaving a white strip beside the dark sidebar fill.
+The Electron titlebar inset kept the page-wide `#fff` background and `BrowserWindow.backgroundColor` `#ffffff` after the in-app appearance switched to dark, leaving an 18px white strip on the main-content inset.
 
 ## Decision
 
-The injected drag-region stylesheet now reads its page background from `--electron-window-background`. Each sidebar synchronization updates that variable from the sidebar's computed background color, while the existing cap continues to copy the sidebar geometry, fill, and border. The dark sidebar therefore supplies `rgb(21, 21, 23)` to the full-width inset outside the sidebar as well.
+The injected drag-region script sets `--electron-window-background` and `BrowserWindow.backgroundColor` from the resolved in-app color mode. Dark is `rgb(21, 21, 23)` (`--dsw-static-neutral-bluish-950`) when `document.body` has `data-ds-dark-theme` or `document.documentElement.style.colorScheme === "dark"`; light is `#ffffff`. Mutation observers on those document signals update both the 18px html inset and the native window color when 外観 changes. The existing sidebar cap still copies sidebar geometry, fill, and border.
+
+## Alternatives considered
+
+**Copy the sidebar computed background onto the full-width inset.** Rejected: the native `BrowserWindow.backgroundColor` and the stylesheet fallback `#fff` still show a white strip on the main-content inset in dark mode, including before the sidebar node is available.
+
+**Follow `nativeTheme` or `prefers-color-scheme` only.** Rejected: the in-app 外観 setting can disagree with the OS color scheme, and the inset must match the resolved ThemePresenter mode.
+
+## Consequences
+
+The 18px inset and the native window background follow the live document color mode immediately. The sidebar cap remains a geometry and border overlay and is not the source of the main-content inset color.
 
 ## Verification
 

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, shell, dialog } = require('electron');
+const { app, BrowserWindow, shell, dialog, ipcMain, nativeTheme } = require('electron');
 const { spawn } = require('child_process');
 const path = require('path');
 const fs = require('fs');
@@ -9,6 +9,18 @@ const DEFAULT_PORT = 3080;
 const STARTUP_TIMEOUT_MS = 120_000;
 const WINDOW_TOP_EXTENSION = 18;
 const TRAFFIC_LIGHT_POSITION = { x: 16, y: -6 };
+const DARK_WINDOW_BACKGROUND = 'rgb(21, 21, 23)';
+const LIGHT_WINDOW_BACKGROUND = '#ffffff';
+
+function windowBackgroundColor(isDark) {
+  return isDark ? DARK_WINDOW_BACKGROUND : LIGHT_WINDOW_BACKGROUND;
+}
+
+ipcMain.on('desktop:set-window-background-color', function(event, color) {
+  if (color !== DARK_WINDOW_BACKGROUND && color !== LIGHT_WINDOW_BACKGROUND) return;
+  const win = BrowserWindow.fromWebContents(event.sender);
+  if (win && !win.isDestroyed()) win.setBackgroundColor(color);
+});
 
 let mainWindow = null;
 let dshProcess = null;
@@ -151,6 +163,8 @@ const DRAG_REGION_SCRIPT = [
   '  window.__electronDragRegion = true;',
   '  var HEIGHT = 40;',
   '  var TOP_INSET = ' + WINDOW_TOP_EXTENSION + ';',
+  '  var DARK_BG = ' + JSON.stringify(DARK_WINDOW_BACKGROUND) + ';',
+  '  var LIGHT_BG = ' + JSON.stringify(LIGHT_WINDOW_BACKGROUND) + ';',
   '  var style = document.createElement("style");',
   '  style.textContent = "html{box-sizing:border-box!important;padding-top:" + TOP_INSET + "px!important;background:var(--electron-window-background,#fff)!important}#electron-drag-region{position:fixed;top:0;left:0;right:0;height:" + HEIGHT + "px;-webkit-app-region:drag;z-index:9998;pointer-events:auto;}";',
   '  document.head.appendChild(style);',
@@ -174,6 +188,20 @@ const DRAG_REGION_SCRIPT = [
   '      }',
   '    });',
   '  };',
+  '  var lastWindowBackground = "";',
+  '  var isDarkAppearance = function() {',
+  '    return (document.body && document.body.hasAttribute("data-ds-dark-theme"))',
+  '      || document.documentElement.style.colorScheme === "dark";',
+  '  };',
+  '  var syncWindowBackground = function() {',
+  '    var color = isDarkAppearance() ? DARK_BG : LIGHT_BG;',
+  '    document.documentElement.style.setProperty("--electron-window-background", color);',
+  '    if (color === lastWindowBackground) return;',
+  '    lastWindowBackground = color;',
+  '    if (window.deepseekHarness && typeof window.deepseekHarness.setWindowBackgroundColor === "function") {',
+  '      window.deepseekHarness.setWindowBackgroundColor(color);',
+  '    }',
+  '  };',
   '  var observedSidebar = null;',
   '  var sidebarResizeObserver = window.ResizeObserver ? new window.ResizeObserver(function() { syncSidebarCap(); }) : null;',
   '  var syncSidebarCap = function() {',
@@ -193,20 +221,22 @@ const DRAG_REGION_SCRIPT = [
   '    }',
   '    var rect = sidebar.getBoundingClientRect();',
   '    var computed = getComputedStyle(sidebar);',
-  '    document.documentElement.style.setProperty("--electron-window-background", computed.backgroundColor || "#fff");',
   '    sidebarCap.style.left = rect.left + "px";',
   '    sidebarCap.style.width = rect.width + "px";',
   '    sidebarCap.style.backgroundColor = computed.backgroundColor || "#fff";',
   '    sidebarCap.style.borderRight = computed.borderRightWidth + " " + computed.borderRightStyle + " " + computed.borderRightColor;',
   '  };',
   '  markNoDrag();',
+  '  syncWindowBackground();',
   '  syncSidebarCap();',
   '  new MutationObserver(function(records) {',
   '    if (records.some(function(record) { return record.target !== sidebarCap; })) {',
   '      markNoDrag();',
   '      syncSidebarCap();',
+  '      syncWindowBackground();',
   '    }',
   '  }).observe(document.body, { childList: true, subtree: true, attributes: true });',
+  '  new MutationObserver(syncWindowBackground).observe(document.documentElement, { attributes: true, attributeFilter: ["style"] });',
   '  window.addEventListener("resize", syncSidebarCap);',
   '})();',
 ].join('\n');
@@ -224,7 +254,7 @@ function createWindow(url) {
     minWidth: 900,
     minHeight: 600 + WINDOW_TOP_EXTENSION,
     title: 'DeepSeek Harness',
-    backgroundColor: '#ffffff',
+    backgroundColor: windowBackgroundColor(nativeTheme.shouldUseDarkColors),
     titleBarStyle: 'hiddenInset',
     trafficLightPosition: TRAFFIC_LIGHT_POSITION,
     webPreferences: {

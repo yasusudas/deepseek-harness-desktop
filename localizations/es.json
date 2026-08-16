@@ -27,7 +27,7 @@
   },
   "settings.locale": {
     "language.title": "Idioma",
-    "language.auto": "Auto ({language})"
+    "language.auto": "Configuración del sistema"
   },
   "settings.agentPreset": {
     "title": "Preajuste del agente",

@@ -27,7 +27,7 @@
   },
   "settings.locale": {
     "language.title": "언어",
-    "language.auto": "Auto({language})"
+    "language.auto": "시스템 설정"
   },
   "settings.agentPreset": {
     "title": "에이전트 프리셋",
