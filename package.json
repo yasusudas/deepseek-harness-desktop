@@ -32,12 +32,16 @@
       "forceCodeSigning": true,
       "hardenedRuntime": true,
       "notarize": true,
+      "signIgnore": [
+        "/Contents/Resources/dsh/.*\\.(json|md|txt|html|css|map|d\\.(ts|cts|mts)|ttf|woff2?|svg|png|gif|ya?ml)$"
+      ],
       "icon": "assets/icon.icns"
     },
     "dmg": {
       "title": "DeepSeek Harness",
       "sign": false
     },
+    "afterPack": "scripts/clear-macos-xattrs-after-pack.js",
     "files": [
       "src/**/*",
       "package.json",
