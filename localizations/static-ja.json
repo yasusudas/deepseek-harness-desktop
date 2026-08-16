@@ -272,5 +272,8 @@
   "同时要求工程能力和 Agent 认知，但可能筛选门槛更高。": "エンジニアリング能力とエージェントへの理解の両方を求めるため、選考のハードルは高くなる可能性があります。",
   "工程落地型 (Recommended)": "実装・運用重視型（おすすめ）",
   "更看重 Agent 理解、训练评测思路和长期成长空间。": "エージェントへの理解、学習・評価の考え方、長期的な成長余地をより重視します。",
-  "更看重能直接做 runtime、tool executor、sandbox、trace 和线上问题排查。": "runtime、tool executor、sandbox、traceの実装や本番の問題調査を直接できることをより重視します。"
+  "更看重能直接做 runtime、tool executor、sandbox、trace 和线上问题排查。": "runtime、tool executor、sandbox、traceの実装や本番の問題調査を直接できることをより重視します。",
+  "Full access": "フルアクセス",
+  "Read Only": "読み取り専用",
+  "Workspace Write": "ワークスペース書き込み"
 }

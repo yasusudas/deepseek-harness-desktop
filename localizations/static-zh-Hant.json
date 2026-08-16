@@ -272,5 +272,8 @@
   "同时要求工程能力和 Agent 认知，但可能筛选门槛更高。": "同時要求工程能力與對代理程式的理解，但篩選門檻可能較高。",
   "工程落地型 (Recommended)": "工程落地型（推薦）",
   "更看重 Agent 理解、训练评测思路和长期成长空间。": "更重視對代理程式的理解、訓練評測思路與長期成長空間。",
-  "更看重能直接做 runtime、tool executor、sandbox、trace 和线上问题排查。": "更重視能直接處理 runtime、tool executor、sandbox、trace 及線上問題排查。"
+  "更看重能直接做 runtime、tool executor、sandbox、trace 和线上问题排查。": "更重視能直接處理 runtime、tool executor、sandbox、trace 及線上問題排查。",
+  "Full access": "完整存取權限",
+  "Read Only": "唯讀",
+  "Workspace Write": "工作區寫入"
 }

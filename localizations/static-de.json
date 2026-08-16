@@ -272,5 +272,8 @@
   "同时要求工程能力和 Agent 认知，但可能筛选门槛更高。": "Erfordert sowohl technische Fähigkeiten als auch Verständnis für Agenten, kann aber eine höhere Auswahlhürde haben.",
   "工程落地型 (Recommended)": "Umsetzungsorientiert (Empfohlen)",
   "更看重 Agent 理解、训练评测思路和长期成长空间。": "Legt mehr Wert auf Verständnis für Agenten, Ansätze für Training und Evaluation sowie langfristiges Entwicklungspotenzial.",
-  "更看重能直接做 runtime、tool executor、sandbox、trace 和线上问题排查。": "Legt mehr Wert darauf, Runtime, Tool-Executor, Sandbox und Trace direkt umzusetzen sowie Probleme in der Produktion zu untersuchen."
+  "更看重能直接做 runtime、tool executor、sandbox、trace 和线上问题排查。": "Legt mehr Wert darauf, Runtime, Tool-Executor, Sandbox und Trace direkt umzusetzen sowie Probleme in der Produktion zu untersuchen.",
+  "Full access": "Vollzugriff",
+  "Read Only": "Nur Lesen",
+  "Workspace Write": "Workspace-Schreibzugriff"
 }

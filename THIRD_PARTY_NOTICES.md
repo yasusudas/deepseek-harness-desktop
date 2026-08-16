@@ -4,7 +4,7 @@
 
 DeepSeek Harness Desktop is licensed under [MIT](LICENSE). This file describes the third-party software included in the distributable bundle. Each project remains under its own license; nothing here changes those terms.
 
-Generated from the current bundle on 2026-08-15. The runtime bundle is rebuilt by [scripts/prepare-bundle.js](scripts/prepare-bundle.js).
+Generated from the current bundle on 2026-08-16. The runtime bundle is rebuilt by [scripts/prepare-bundle.js](scripts/prepare-bundle.js).
 
 ## Runtime npm dependencies
 
@@ -276,14 +276,14 @@ Generated from the current bundle on 2026-08-15. The runtime bundle is rebuilt b
 | @shikijs/themes | 4.4.3 | MIT | [source](https://github.com/shikijs/shiki) | LICENSE (dsh/lib/node_modules/@shikijs/themes) |
 | @shikijs/types | 4.4.3 | MIT | [source](https://github.com/shikijs/shiki) | LICENSE (dsh/lib/node_modules/@shikijs/types) |
 | @shikijs/vscode-textmate | 10.0.2 | MIT | [source](https://github.com/shikijs/vscode-textmate) | LICENSE.md (dsh/lib/node_modules/@shikijs/vscode-textmate) |
-| @smithy/core | 3.33.1 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/core) |
-| @smithy/credential-provider-imds | 4.5.1 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/credential-provider-imds) |
-| @smithy/fetch-http-handler | 5.7.1 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/fetch-http-handler) |
+| @smithy/core | 3.33.2 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/core) |
+| @smithy/credential-provider-imds | 4.5.2 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/credential-provider-imds) |
+| @smithy/fetch-http-handler | 5.7.2 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/fetch-http-handler) |
 | @smithy/is-array-buffer | 2.2.0 | Apache-2.0 | [source](https://github.com/awslabs/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/is-array-buffer) |
-| @smithy/node-http-handler | 4.11.1 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@aws-sdk/credential-provider-http/node_modules/@smithy/node-http-handler, dsh/lib/node_modules/@aws-sdk/nested-clients/node_modules/@smithy/node-http-handler) |
+| @smithy/node-http-handler | 4.11.2 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@aws-sdk/credential-provider-http/node_modules/@smithy/node-http-handler, dsh/lib/node_modules/@aws-sdk/nested-clients/node_modules/@smithy/node-http-handler) |
 | @smithy/node-http-handler | 4.7.3 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/node-http-handler) |
-| @smithy/signature-v4 | 5.7.1 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/signature-v4) |
-| @smithy/types | 4.17.1 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/types) |
+| @smithy/signature-v4 | 5.7.2 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/signature-v4) |
+| @smithy/types | 4.17.2 | Apache-2.0 | [source](https://github.com/smithy-lang/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/types) |
 | @smithy/util-buffer-from | 2.2.0 | Apache-2.0 | [source](https://github.com/awslabs/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/util-buffer-from) |
 | @smithy/util-utf8 | 2.3.0 | Apache-2.0 | [source](https://github.com/awslabs/smithy-typescript) | LICENSE (dsh/lib/node_modules/@smithy/util-utf8) |
 | @standard-schema/spec | 1.1.0 | MIT | [source](https://github.com/standard-schema/standard-schema) | LICENSE (dsh/lib/node_modules/@standard-schema/spec) |

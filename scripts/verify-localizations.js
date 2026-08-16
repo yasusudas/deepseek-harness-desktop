@@ -8,6 +8,7 @@ const locales = readJson('locales.json');
 const reference = readJson('ja.json');
 const staticReference = readJson('static-ja.json');
 const localizedIds = locales.map(({ id }) => id).filter((id) => !['zh', 'en'].includes(id));
+const staticLocaleIds = locales.map(({ id }) => id).filter((id) => id !== 'en');
 const errors = [];
 
 function readJson(name) {
@@ -49,6 +50,18 @@ function compareDictionary(id, actual) {
 }
 
 function compareStaticDictionary(id, actual) {
+  if (id === 'zh') {
+    for (const key of Object.keys(actual)) {
+      if (!Object.hasOwn(staticReference, key)) {
+        errors.push(`static-${id}/${key}: source phrase is not registered`);
+      } else if (typeof actual[key] !== 'string' || actual[key].trim() === '') {
+        errors.push(`static-${id}/${key}: translation is empty`);
+      } else if (placeholders(actual[key]) !== placeholders(key)) {
+        errors.push(`static-${id}/${key}: placeholders differ from source`);
+      }
+    }
+    return;
+  }
   const expectedKeys = Object.keys(staticReference).sort();
   const receivedKeys = Object.keys(actual).sort();
   if (JSON.stringify(receivedKeys) !== JSON.stringify(expectedKeys)) {
@@ -72,11 +85,12 @@ for (const id of localizedIds) {
   compareDictionary(id, readJson(`${id}.json`));
   compareStaticDictionary(id, readJson(`static-${id}.json`));
 }
+compareStaticDictionary('zh', readJson('static-zh.json'));
 
 if (errors.length) {
   console.error(errors.join('\n'));
   process.exitCode = 1;
 } else {
   const entries = Object.values(reference).reduce((count, dictionary) => count + Object.keys(dictionary).length, 0);
-  console.log(`Verified ${localizedIds.length} localized dictionaries: ${entries} keyed and ${Object.keys(staticReference).length} static phrases each.`);
+    console.log(`Verified ${localizedIds.length} localized dictionaries and ${staticLocaleIds.length} static overlays: ${entries} keyed and ${Object.keys(staticReference).length} full static phrases.`);
 }

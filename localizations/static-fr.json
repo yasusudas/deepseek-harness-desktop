@@ -272,5 +272,8 @@
   "同时要求工程能力和 Agent 认知，但可能筛选门槛更高。": "Exige à la fois des compétences d’ingénierie et une compréhension des agents, mais peut relever le niveau de sélection.",
   "工程落地型 (Recommended)": "Approche axée sur la mise en œuvre (Recommandé)",
   "更看重 Agent 理解、训练评测思路和长期成长空间。": "Accorde davantage d’importance à la compréhension des agents, aux méthodes d’entraînement et d’évaluation et au potentiel de progression à long terme.",
-  "更看重能直接做 runtime、tool executor、sandbox、trace 和线上问题排查。": "Accorde davantage d’importance à la capacité à travailler directement sur le runtime, l’exécuteur d’outils, le bac à sable, les traces et le diagnostic des problèmes en production."
+  "更看重能直接做 runtime、tool executor、sandbox、trace 和线上问题排查。": "Accorde davantage d’importance à la capacité à travailler directement sur le runtime, l’exécuteur d’outils, le bac à sable, les traces et le diagnostic des problèmes en production.",
+  "Full access": "Accès complet",
+  "Read Only": "Lecture seule",
+  "Workspace Write": "Écriture dans l’espace de travail"
 }

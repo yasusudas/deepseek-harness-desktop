@@ -9,11 +9,12 @@ const WEB_FRONTEND_ASSETS = path.join(MODULE_ROOT, 'dsh-web-frontend', 'dist', '
 const LOCALIZATION_ROOT = path.join(ROOT, 'localizations');
 const locales = JSON.parse(fs.readFileSync(path.join(LOCALIZATION_ROOT, 'locales.json'), 'utf8'));
 const localizedIds = locales.map(({ id }) => id).filter((id) => !['zh', 'en'].includes(id));
+const staticLocaleIds = locales.map(({ id }) => id).filter((id) => id !== 'en');
 const localizedDictionaries = Object.fromEntries(localizedIds.map((id) => [
   id,
   JSON.parse(fs.readFileSync(path.join(LOCALIZATION_ROOT, `${id}.json`), 'utf8')),
 ]));
-const staticDictionaries = Object.fromEntries(localizedIds.map((id) => [
+const staticDictionaries = Object.fromEntries(staticLocaleIds.map((id) => [
   id,
   JSON.parse(fs.readFileSync(path.join(LOCALIZATION_ROOT, `static-${id}.json`), 'utf8')),
 ]));
@@ -45,6 +46,7 @@ function localizationRuntimeSource() {
   return `
 \t\tconst LOCALIZED_DICTIONARIES = Object.freeze(${JSON.stringify(localizedDictionaries)});
 \t\tconst STATIC_DICTIONARIES = Object.freeze(${JSON.stringify(staticDictionaries)});
+\t\tconst STATIC_REPLACEMENT_KEYS = Object.freeze(Object.fromEntries(Object.entries(STATIC_DICTIONARIES).map(([locale, dictionary]) => [locale, Object.keys(dictionary).sort((a, b) => b.length - a.length)])));
 \t\tconst STATIC_LOCALE_LABELS = new Set(${JSON.stringify(locales.map(({ label }) => label))});
 \t\tconst AUTO_DEFAULT_MARKER = "dsh.desktop.locale-auto-default.v2";
 \t\tconst STATIC_ATTRS = ["aria-label", "title", "placeholder", "alt"];
@@ -59,8 +61,13 @@ function localizationRuntimeSource() {
 \t\tfunction staticTranslateValue(value, locale = staticLocale) {
 \t\t\tconst key = value.trim();
 \t\t\tif (STATIC_LOCALE_LABELS.has(key)) return void 0;
-\t\t\tconst translated = STATIC_DICTIONARIES[locale]?.[key];
-\t\t\treturn translated === void 0 ? void 0 : value.replace(key, translated);
+\t\t\tconst dictionary = STATIC_DICTIONARIES[locale];
+\t\t\tconst translated = dictionary?.[key];
+\t\t\tif (translated !== void 0) return value.replace(key, translated);
+\t\t\tfor (const source of STATIC_REPLACEMENT_KEYS[locale] ?? []) {
+\t\t\t\tif (source !== key && value.includes(source)) return value.replaceAll(source, dictionary[source]);
+\t\t\t}
+\t\t\treturn void 0;
 \t\t}
 \t\tfunction initializeAutoDefault(host) {
 \t\t\tif (typeof window === "undefined" || window.localStorage === void 0) return;
