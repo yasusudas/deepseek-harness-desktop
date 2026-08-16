@@ -1,15 +1,16 @@
 # DeepSeek Harness Desktop
 
-[English](README.md) | [日本語](README.ja.md)
+[English](README.md) | [日本語](README.ja.md) | [繁體中文](README.zh-Hant.md) | [한국어](README.ko.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
-这是 DeepSeek Harness 的非官方 macOS Electron 封装版本。该项目基于 DeepSeek Harness，增加了日语本地化、macOS 窗口集成，以及用于发布的运行时打包。
+这是 DeepSeek Harness 的非官方 macOS Electron 封装版本。该项目基于 DeepSeek Harness，增加了多语言本地化、macOS 窗口集成，以及用于发布的运行时打包。
 
 本项目不是 DeepSeek AI 官方桌面应用。上游项目是 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)。
 
 ## 功能
 
 - 面向 macOS 的 Electron 应用
-- 日语界面本地化
+- 简体中文、繁体中文、英语、日语、韩语、西班牙语、巴西葡萄牙语、德语和法语界面本地化
+- 根据 macOS 首选语言自动选择界面语言，并使用对应的 macOS 系统字体
 - 将 Node.js 和 DeepSeek Harness 运行时随应用一起打包
 - 面向 Apple Silicon（arm64）的构建
 
@@ -34,7 +35,7 @@ npm run build:dir
 npm run build
 ```
 
-`prepare-bundle` 会下载 `@deepseek-ai/dsh@0.1.0-rc.6` 和 Node.js 运行时，然后应用日语本地化和第三方许可证列表。构建应用需要网络连接。
+`prepare-bundle` 会先验证本地化词典，再下载 `@deepseek-ai/dsh@0.1.0-rc.6` 和 Node.js 运行时，然后应用各语言本地化和第三方许可证列表。构建应用需要网络连接。
 
 ## 上游项目
 

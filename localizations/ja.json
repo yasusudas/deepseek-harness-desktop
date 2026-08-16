@@ -26,7 +26,8 @@
     "truncated": "省略済み"
   },
   "settings.locale": {
-    "language.title": "言語"
+    "language.title": "言語",
+    "language.auto": "Auto（{language}）"
   },
   "settings.agentPreset": {
     "title": "エージェントプリセット",

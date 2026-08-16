@@ -1,15 +1,16 @@
 # DeepSeek Harness Desktop
 
-[日本語](README.ja.md) | [中文](README.zh.md)
+[日本語](README.ja.md) | [简体中文](README.zh.md) | [繁體中文](README.zh-Hant.md) | [한국어](README.ko.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
-An unofficial macOS Electron wrapper for DeepSeek Harness. Based on DeepSeek Harness, this project adds Japanese localization, macOS window integration, and bundled runtimes for distribution.
+An unofficial macOS Electron wrapper for DeepSeek Harness. Based on DeepSeek Harness, this project adds multilingual localization, macOS window integration, and bundled runtimes for distribution.
 
 This project is not an official desktop application from DeepSeek AI. The upstream project is [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).
 
 ## Features
 
 - Electron application for macOS
-- Japanese UI localization
+- UI localization for Simplified Chinese, Traditional Chinese, English, Japanese, Korean, Spanish, Brazilian Portuguese, German, and French
+- Auto language selection from the macOS language preference, with locale-specific macOS system fonts
 - Node.js and the DeepSeek Harness runtime bundled with the application
 - Builds for Apple Silicon (arm64)
 
@@ -34,7 +35,7 @@ npm run build:dir
 npm run build
 ```
 
-`prepare-bundle` downloads `@deepseek-ai/dsh@0.1.0-rc.6` and the Node.js runtime, then applies Japanese localization and the third-party license list. A network connection is required to build the application.
+`prepare-bundle` verifies the localization dictionaries, downloads `@deepseek-ai/dsh@0.1.0-rc.6` and the Node.js runtime, then applies the localizations and third-party license list. A network connection is required to build the application.
 
 ## Upstream project
 

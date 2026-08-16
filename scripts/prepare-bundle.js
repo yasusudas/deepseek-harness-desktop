@@ -25,6 +25,8 @@ exec "$DIR/node/bin/node" "$DIR/lib/node_modules/@deepseek-ai/dsh/lib/bin.js" "$
 
 function main() {
   console.log('Preparing DeepSeek Harness bundle...');
+  console.log('Verifying localizations...');
+  run(`node "${path.join(ROOT, 'scripts', 'verify-localizations.js')}"`);
   fs.rmSync(BUNDLE, { recursive: true, force: true });
   fs.mkdirSync(BUNDLE, { recursive: true });
 
@@ -45,8 +47,8 @@ function main() {
   fs.rmSync(tmp, { force: true });
 
   writeLauncher();
-  console.log('Applying Japanese localization...');
-  run(`node "${path.join(ROOT, 'scripts', 'patch-ja-localization.js')}"`);
+  console.log('Applying localizations...');
+  run(`node "${path.join(ROOT, 'scripts', 'patch-localizations.js')}"`);
   console.log('Generating third-party notices...');
   run(`node "${path.join(ROOT, 'scripts', 'generate-third-party-notices.js')}"`);
   const size = execSync(`du -sh "${BUNDLE}"`, { encoding: 'utf8' }).trim();

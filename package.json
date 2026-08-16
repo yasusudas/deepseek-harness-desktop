@@ -8,6 +8,7 @@
   "scripts": {
     "start": "electron .",
     "prepare-bundle": "node scripts/prepare-bundle.js",
+    "verify-localizations": "node scripts/verify-localizations.js",
     "generate-third-party-notices": "node scripts/generate-third-party-notices.js",
     "verify-third-party-notices": "node scripts/generate-third-party-notices.js --check",
     "build": "npm run prepare-bundle && CSC_IDENTITY_AUTO_DISCOVERY=false electron-builder --mac",

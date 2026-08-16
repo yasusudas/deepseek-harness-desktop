@@ -1,15 +1,16 @@
 # DeepSeek Harness Desktop
 
-[English](README.md) | [中文](README.zh.md)
+[English](README.md) | [简体中文](README.zh.md) | [繁體中文](README.zh-Hant.md) | [한국어](README.ko.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
-非公式のmacOS Electronラッパー版DeepSeek Harnessです。DeepSeek Harness本体を基に、日本語ローカライズ、macOSのウィンドウ統合、配布用のランタイム同梱を追加しています。
+非公式のmacOS Electronラッパー版DeepSeek Harnessです。DeepSeek Harness本体を基に、多言語ローカライズ、macOSのウィンドウ統合、配布用のランタイム同梱を追加しています。
 
 本プロジェクトはDeepSeek AIの公式デスクトップアプリではありません。上流プロジェクトは[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)です。
 
 ## 特徴
 
 - macOS向けElectronアプリ
-- 日本語UIローカライズ
+- 簡体字中国語、繁体字中国語、英語、日本語、韓国語、スペイン語、ブラジルポルトガル語、ドイツ語、フランス語のUIローカライズ
+- macOSの優先言語を使うAuto設定と言語別のmacOSシステムフォント
 - Node.jsとDeepSeek Harnessランタイムをアプリに同梱
 - Apple Silicon（arm64）向けビルド
 
@@ -34,7 +35,7 @@ npm run build:dir
 npm run build
 ```
 
-`prepare-bundle`は`@deepseek-ai/dsh@0.1.0-rc.6`とNode.jsランタイムをダウンロードし、日本語ローカライズと第三者ライセンス一覧を適用します。ビルドにはネットワーク接続が必要です。
+`prepare-bundle`はローカライズ辞書を検証し、`@deepseek-ai/dsh@0.1.0-rc.6`とNode.jsランタイムをダウンロードしてから、各言語のローカライズと第三者ライセンス一覧を適用します。ビルドにはネットワーク接続が必要です。
 
 ## 上流プロジェクト
 

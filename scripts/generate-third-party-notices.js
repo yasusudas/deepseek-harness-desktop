@@ -148,7 +148,7 @@ function render(records) {
     '## Attribution',
     '',
     '- DeepSeek Harness: https://github.com/deepseek-ai/deepseek-harness',
-    '- This fork adds an Electron wrapper, Japanese localization, and macOS window integration.',
+    '- This fork adds an Electron wrapper, multilingual localization, and macOS window integration.',
     '',
   );
 

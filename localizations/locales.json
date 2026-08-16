@@ -1,0 +1,11 @@
+[
+  { "id": "zh", "label": "简体中文", "font": "\"PingFang SC\", \"Hiragino Sans GB\", \"Microsoft YaHei\", -apple-system, BlinkMacSystemFont, sans-serif" },
+  { "id": "zh-Hant", "label": "繁體中文", "font": "\"PingFang TC\", \"PingFang HK\", -apple-system, BlinkMacSystemFont, sans-serif" },
+  { "id": "en", "label": "English" },
+  { "id": "ja", "label": "日本語", "font": "\"Hiragino Sans\", \"Hiragino Kaku Gothic Interface\", -apple-system, BlinkMacSystemFont, sans-serif" },
+  { "id": "ko", "label": "한국어", "font": "\"Apple SD Gothic Neo\", \"Malgun Gothic\", -apple-system, BlinkMacSystemFont, sans-serif" },
+  { "id": "es", "label": "Español" },
+  { "id": "pt-BR", "label": "Português (Brasil)" },
+  { "id": "de", "label": "Deutsch" },
+  { "id": "fr", "label": "Français" }
+]
