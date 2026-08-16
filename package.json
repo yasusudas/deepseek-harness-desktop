@@ -28,8 +28,7 @@
         "dmg",
         "dir"
       ],
-      "identity": "Developer ID Application: Issei Yasuda (ZK2547NW56)",
-      "sign": true,
+      "identity": "Issei Yasuda (ZK2547NW56)",
       "forceCodeSigning": true,
       "hardenedRuntime": true,
       "notarize": true,
