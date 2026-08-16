@@ -2,6 +2,8 @@
 
 [日本語](README.ja.md) | [简体中文](README.zh.md) | [繁體中文](README.zh-Hant.md) | [한국어](README.ko.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
+<p align="center"><img src="assets/desktop-app-en.png" alt="DeepSeek Harness Desktop preview" width="900"></p>
+
 An unofficial macOS Electron wrapper for DeepSeek Harness. Based on DeepSeek Harness, this project adds multilingual localization, macOS window integration, and bundled runtimes for distribution.
 
 This project is not an official desktop application from DeepSeek AI. The upstream project is [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness).

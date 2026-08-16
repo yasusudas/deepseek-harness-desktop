@@ -2,6 +2,8 @@
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh.md) | [繁體中文](README.zh-Hant.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
+<p align="center"><img src="assets/desktop-app-ko.png" alt="DeepSeek Harness Desktop 미리 보기" width="900"></p>
+
 DeepSeek Harness를 위한 비공식 macOS Electron 래퍼입니다. DeepSeek Harness를 기반으로 다국어 현지화, macOS 윈도우 통합, 배포용 런타임 번들 기능을 추가합니다.
 
 이 프로젝트는 DeepSeek AI의 공식 데스크톱 애플리케이션이 아닙니다. 업스트림 프로젝트는 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)입니다.

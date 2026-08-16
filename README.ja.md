@@ -2,6 +2,8 @@
 
 [English](README.md) | [简体中文](README.zh.md) | [繁體中文](README.zh-Hant.md) | [한국어](README.ko.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
+<p align="center"><img src="assets/desktop-app-ja.png" alt="DeepSeek Harness Desktopのプレビュー" width="900"></p>
+
 非公式のmacOS Electronラッパー版DeepSeek Harnessです。DeepSeek Harness本体を基に、多言語ローカライズ、macOSのウィンドウ統合、配布用のランタイム同梱を追加しています。
 
 本プロジェクトはDeepSeek AIの公式デスクトップアプリではありません。上流プロジェクトは[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)です。

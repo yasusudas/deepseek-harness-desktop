@@ -2,6 +2,8 @@
 
 [English](README.md) | [日本語](README.ja.md) | [简体中文](README.zh.md) | [한국어](README.ko.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
+<p align="center"><img src="assets/desktop-app-zh-Hant.png" alt="DeepSeek Harness Desktop 預覽" width="900"></p>
+
 這是 DeepSeek Harness 的非官方 macOS Electron 封裝版本。本專案以 DeepSeek Harness 為基礎，加入多語言在地化、macOS 視窗整合，以及供發佈使用的執行環境打包。
 
 本專案不是 DeepSeek AI 的官方桌面應用程式。上游專案是 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)。
