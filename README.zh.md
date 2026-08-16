@@ -1,6 +1,6 @@
 # DeepSeek Harness Desktop
 
-[English](README.md) | [日本語](README.ja.md) | [繁體中文](README.zh-Hant.md) | [한국어](README.ko.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
+[English](README.en.md) | [日本語](README.md) | [繁體中文](README.zh-Hant.md) | [한국어](README.ko.md) | [Español](README.es.md) | [Português (Brasil)](README.pt-BR.md) | [Deutsch](README.de.md) | [Français](README.fr.md)
 
 <p align="center"><img src="assets/desktop-app-zh.png" alt="DeepSeek Harness Desktop 预览" width="900"></p>
 
